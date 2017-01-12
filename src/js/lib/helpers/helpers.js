@@ -11,13 +11,12 @@ function isValidQueryStr (query) {
 
 function transformOSData (data) {
   var res = [];
-  data = data.slice(1);
-  var len = data[0].length;
+  var len = data[1].length;
   for (var i = 0; i < len; i++) {
     var item = {};
-    item.title = data[0][i];
-    item.snippet = data[1][i];
-    item.url = data[2][i];
+    item.title = data[1][i];
+    item.snippet = data[2][i];
+    item.url = data[3][i];
     res.push(item);
   }
   return res;
