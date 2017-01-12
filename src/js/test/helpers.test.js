@@ -38,4 +38,36 @@ describe('helpers module', function() {
       expect(result).to.be.true;
     });
   });
+
+  describe('transformOSData function', function () {
+    before(function () {
+      this.results = require('./fixtures/opensearchData.js').results;
+      this.expected = require('./fixtures/opensearchData.js').expected;
+    });
+    after(function () {
+      delete this.results;
+      delete this.expected;
+    });
+
+    it('should return an array', function () {
+      var exp = h.transformOSData(this.results);
+      expect(exp).to.be.an.array;
+    });
+
+    it('should return an empty array if given empty results', function () {
+      var exp = h.transformOSData(['abcd', [], [], []]);
+      expect(exp).to.be.an.array;
+      expect(exp).to.have.length(0);
+    });
+    
+    it('should return an array with length equal to the results', function () {
+      var exp = h.transformOSData(this.results);
+      expect(exp).to.have.length(this.expected.length);
+    });
+
+    it('should return an array of objects in the expected format', function () {
+      var exp = h.transformOSData(this.results);
+      expect(exp).to.be.deep.equal(this.expected);
+    });
+  });
 });
