@@ -22,8 +22,13 @@ function transformOSData (data) {
   return res;
 }
 
+function getNumResults (data) {
+  return data[1].length;
+}
+
 module.exports = {
   createOSQueryData: createOSQueryData,
   isValidQueryStr: isValidQueryStr,
-  transformOSData: transformOSData
+  transformOSData: transformOSData,
+  getNumResults: getNumResults
 };

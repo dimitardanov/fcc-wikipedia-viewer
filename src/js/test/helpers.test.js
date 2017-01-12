@@ -59,7 +59,7 @@ describe('helpers module', function() {
       expect(exp).to.be.an.array;
       expect(exp).to.have.length(0);
     });
-    
+
     it('should return an array with length equal to the results', function () {
       var exp = h.transformOSData(this.results);
       expect(exp).to.have.length(this.expected.length);
@@ -68,6 +68,25 @@ describe('helpers module', function() {
     it('should return an array of objects in the expected format', function () {
       var exp = h.transformOSData(this.results);
       expect(exp).to.be.deep.equal(this.expected);
+    });
+  });
+
+  describe('getNumResults function', function () {
+    before(function () {
+      this.results = require('./fixtures/opensearchData.js').results;
+    });
+    after(function () {
+      delete this.results;
+    });
+
+    it('should return 0 if no results are found', function () {
+      var exp = h.getNumResults(['notfound', [], [], []]);
+      expect(exp).to.be.equal(0);
+    });
+
+    it('should return the number of results found', function () {
+      var exp = h.getNumResults(this.results);
+      expect(exp).to.be.equal(4);
     });
   });
 });
