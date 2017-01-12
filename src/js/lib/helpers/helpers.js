@@ -11,8 +11,7 @@ function isValidQueryStr (query) {
 
 function transformOSData (data) {
   var res = [];
-  var len = data[1].length;
-  for (var i = 0; i < len; i++) {
+  for (var i = 0; i < getNumResults(data); i++) {
     var item = {};
     item.title = data[1][i];
     item.snippet = data[2][i];
