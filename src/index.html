@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title></title>
+  <title>Wikipedia Viewer</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="css/styles.css" rel="stylesheet">
@@ -14,9 +14,27 @@
 </head>
 <body>
 
-  <!-- <div id="templateDemo"></div> -->
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        <span class="navbar-brand">Wikipedia Viewer</span>
+      </div>
+    </div>
+  </nav>
 
-  {{> dogs}}
+  <section class="container search">
+    <form class="form-inline text-center">
+      <div class="form-group">
+        <label for="query" class="sr-only">Search Wikipedia</label>
+        <input type="text" class="form-control" id="query" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-primary" id="search-btn"><span class="glyphicon glyphicon-search"></span></button>
+    </form>
+  </section>
+
+  <section class="container results" id="results">
+    <p class="text-center"><span class="glyphicon glyphicon-search"></span></p>
+  </section>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
