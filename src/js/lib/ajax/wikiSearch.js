@@ -1,18 +1,16 @@
 
 
-function search (url, data, successFunc, errorFunc) {
+function search (url, data, funcs) {
   $.ajax({
     url: url,
     data: data,
     crossDomain: true,
     dataType: 'jsonp',
     success: function (data, status, jqxhr) {
-      console.log('yay');
-      successFunc(data);
+      funcs.success(data);
     },
     error: function (status, jqxhr) {
-      console.log('oops');
-      errorFunc(status);
+      funcs.error(status);
     }
   });
 }
