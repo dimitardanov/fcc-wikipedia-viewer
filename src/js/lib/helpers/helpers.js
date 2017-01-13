@@ -25,9 +25,14 @@ function getNumResults (data) {
   return data[1].length;
 }
 
+function hasResults (data) {
+  return getNumResults(data) > 0;
+}
+
 module.exports = {
   createOSQueryData: createOSQueryData,
   isValidQueryStr: isValidQueryStr,
   transformOSData: transformOSData,
-  getNumResults: getNumResults
+  getNumResults: getNumResults,
+  hasResults: hasResults
 };

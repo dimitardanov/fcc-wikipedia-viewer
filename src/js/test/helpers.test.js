@@ -89,4 +89,24 @@ describe('helpers module', function() {
       expect(exp).to.be.equal(4);
     });
   });
+
+  describe('hasResults function', function () {
+    before(function () {
+      this.results = require('./fixtures/opensearchData.js').results;
+    });
+    after(function () {
+      delete this.results;
+    });
+
+    it('should return false if given data with 0 results', function () {
+      var res = ['notfound', [], [], []];
+      var exp = h.hasResults(res);
+      expect(exp).to.be.false;
+    });
+
+    it('should return true if fiven data containing results', function () {
+      var exp = h.hasResults(this.results);
+      expect(exp).to.be.true;
+    });
+  });
 });
